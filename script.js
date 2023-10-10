@@ -3,12 +3,12 @@
 let projects = [
   {
     title: 'Chores',
-    id: new Date().getTime(),
+    id: 1,
     projectTodos: [
       {
         title: 'Get groceries',
         dueDate: '10-29-2023',
-        id: 1
+        id: new Date().getTime()
       }
     ]
   }
@@ -58,7 +58,8 @@ function removeTodoFromProject(projectID, todoID) {
   })
 }
 
-addProject('poop');
+addProject('asd');
+addProject('chores')
 
 //VIEW
 
@@ -68,11 +69,13 @@ function displayProjects() {
   projects.forEach(project => {
     let element = document.createElement('div');
     element.innerText = project.title;
+    element.id = project.id;
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete Project';
     //deleteButton.onclick = deleteProject;
     element.appendChild(deleteButton);
+    element.addEventListener('click', getProject)
 
     projectList.appendChild(element);
   })
@@ -82,6 +85,7 @@ displayProjects()
 
 function displayTodos(projectID) {
   const todoList = document.querySelector('#todo-list');
+  todoList.textContent = '';
   projects.forEach(project => {
     if(project.id == projectID) {
       project.projectTodos.forEach(todo => {
@@ -99,5 +103,23 @@ function displayTodos(projectID) {
   })
 }
 
+//CONTROLLER
+
+let currentProjectID;
+
+function addTodo() {
+  const todo = document.querySelector('#todo-title');
+  const title = todo.value;
+
+  const date = document.querySelector('#date');
+  const dueDate = date.value;
+
+  addTodoToProject(1, title, dueDate);
+  displayTodos(1);
+}
+
+function getProject() {
+  currentProjectID = this.id;
+}
 
 
