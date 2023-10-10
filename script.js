@@ -58,8 +58,7 @@ function removeTodoFromProject(projectID, todoID) {
   })
 }
 
-addProject('asd');
-addProject('chores')
+addProject('hi')
 
 //VIEW
 
@@ -114,12 +113,13 @@ function addTodo() {
   const date = document.querySelector('#date');
   const dueDate = date.value;
 
-  addTodoToProject(1, title, dueDate);
-  displayTodos(1);
+  addTodoToProject(currentProjectID, title, dueDate);
+  displayTodos(currentProjectID);
 }
 
 function getProject() {
   currentProjectID = this.id;
+  displayTodos(currentProjectID);
 }
 
 
