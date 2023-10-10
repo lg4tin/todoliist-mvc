@@ -7,7 +7,7 @@ let projects = [
     projectTodos: [
       {
         title: 'Get groceries',
-        date: '10-29-2023',
+        dueDate: '10-29-2023',
         id: new Date().getTime()
       }
     ]
@@ -31,5 +31,34 @@ function removeProject(id) {
     }
   })
 }
+
+function addTodoToProject(projectID, title, dueDate) {
+  projects.forEach(project => {
+    if(project.id == projectID) {
+      project.projectTodos.push({
+        title: title,
+        dueDate: dueDate,
+        id: new Date().getTime()
+      })
+    }
+  })
+}
+
+function removeTodoFromProject(projectID, todoID) {
+  projects.forEach(project => {
+    if(project.id == projectID) {
+      project.projectTodos = project.projectTodos.filter(todo => {
+        if(todo.id == todoID) {
+          return false;
+        } else {
+          return true;
+        }
+      })
+    }
+  })
+}
+
+addProject('poop');
+
 
 
