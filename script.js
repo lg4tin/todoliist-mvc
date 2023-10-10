@@ -90,10 +90,11 @@ function displayTodos(projectID) {
       project.projectTodos.forEach(todo => {
         let element = document.createElement('div');
         element.innerText = todo.title;
+        element.id = todo.id;
 
         let deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete Todo';
-        //deleteButton.onclick = deleteTodo;
+        //deleteButton.onclick = removeTodoFromProject(projectID, element.id);
         element.appendChild(deleteButton);
 
         todoList.appendChild(element);
@@ -115,6 +116,14 @@ function addTodo() {
 
   addTodoToProject(currentProjectID, title, dueDate);
   displayTodos(currentProjectID);
+}
+
+function addProjectButton() {
+  const project = document.querySelector('#project-title');
+  const projectTitle = project.value;
+
+  addProject(projectTitle);
+  displayProjects();
 }
 
 function getProject() {
