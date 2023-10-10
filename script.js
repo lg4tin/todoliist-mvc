@@ -8,7 +8,7 @@ let projects = [
       {
         title: 'Get groceries',
         dueDate: '10-29-2023',
-        id: new Date().getTime()
+        id: 1
       }
     ]
   }
@@ -59,6 +59,45 @@ function removeTodoFromProject(projectID, todoID) {
 }
 
 addProject('poop');
+
+//VIEW
+
+function displayProjects() {
+  const projectList = document.querySelector('#project-list');
+  projectList.textContent = '';
+  projects.forEach(project => {
+    let element = document.createElement('div');
+    element.innerText = project.title;
+
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete Project';
+    //deleteButton.onclick = deleteProject;
+    element.appendChild(deleteButton);
+
+    projectList.appendChild(element);
+  })
+}
+
+displayProjects()
+
+function displayTodos(projectID) {
+  const todoList = document.querySelector('#todo-list');
+  projects.forEach(project => {
+    if(project.id == projectID) {
+      project.projectTodos.forEach(todo => {
+        let element = document.createElement('div');
+        element.innerText = todo.title;
+
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete Todo';
+        //deleteButton.onclick = deleteTodo;
+        element.appendChild(deleteButton);
+
+        todoList.appendChild(element);
+      })
+    }
+  })
+}
 
 
 
