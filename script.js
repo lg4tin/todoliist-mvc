@@ -72,7 +72,10 @@ function displayProjects() {
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete Project';
-    //deleteButton.onclick = deleteProject;
+    deleteButton.onclick = () => {
+      removeProject(element.id);
+      displayProjects();
+    };
     element.appendChild(deleteButton);
     element.addEventListener('click', getProject)
 
