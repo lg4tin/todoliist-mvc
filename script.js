@@ -94,7 +94,10 @@ function displayTodos(projectID) {
 
         let deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete Todo';
-        //deleteButton.onclick = removeTodoFromProject(projectID, element.id);
+        deleteButton.onclick = () => {
+          removeTodoFromProject(currentProjectID, element.id);
+          displayTodos(currentProjectID);
+        }
         element.appendChild(deleteButton);
 
         todoList.appendChild(element);
