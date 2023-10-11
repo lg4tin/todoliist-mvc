@@ -179,7 +179,7 @@ function getProject() {
 }
 
 function editButtons(projectID, todoID) {
-  let updatedText = prompt('?');
+  let updatedText = prompt('Change Todo');
   if(updatedText == '') return;
 
   editTodo(projectID, todoID, updatedText)

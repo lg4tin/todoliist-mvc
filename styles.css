@@ -3,6 +3,21 @@ body {
   margin: 0;
 }
 
+button {
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 0 10px;
+}
+
 .header {
   background-color: aqua;
   text-align: center;
@@ -21,4 +36,24 @@ body {
 
 .right {
   padding: 50px;
+}
+
+#project-list div,
+#todo-list div {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;;
+}
+
+#project-list div:hover {
+  background-color: azure;
+}
+
+.input-bar {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
