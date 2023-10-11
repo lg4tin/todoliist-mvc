@@ -71,7 +71,13 @@ function editTodo(projectID, todoID, updatedText) {
             title: updatedText,
             dueDate: todo.dueDate,
             id: todo.id
-          };
+          }
+        } else {
+          return todo = {
+            title: todo.title,
+            dueDate: todo.dueDate,
+            id: todo.id
+          }
         }
       })
     }
@@ -120,9 +126,19 @@ function displayTodos(projectID) {
           displayTodos(currentProjectID);
         }
         element.appendChild(deleteButton);
-        element.addEventListener('click', () => {
-          editButton(currentProjectID, element.id);
+
+        let editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => {
+          let updatedText = prompt('?');
+          if(updatedText == '') return;
+
+          editTodo(currentProjectID, element.id, updatedText)
+
+          displayTodos(currentProjectID);
+          
         })
+        element.appendChild(editButton);
 
         todoList.appendChild(element);
       })
@@ -170,6 +186,7 @@ function getProject() {
 
 function editButton(projectID, todoID) {
   let updatedText = prompt('?');
+  //if(updatedText == '') return;
 
   editTodo(projectID, todoID, updatedText)
 
