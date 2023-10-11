@@ -120,6 +120,9 @@ function displayTodos(projectID) {
           displayTodos(currentProjectID);
         }
         element.appendChild(deleteButton);
+        element.addEventListener('click', () => {
+          editButton(currentProjectID, element.id);
+        })
 
         todoList.appendChild(element);
       })
@@ -130,6 +133,7 @@ function displayTodos(projectID) {
 //CONTROLLER
 
 let currentProjectID;
+let currentProjectTitle;
 
 function addTodo() {
   const todo = document.querySelector('#todo-title');
@@ -160,12 +164,16 @@ function addProjectButton() {
 
 function getProject() {
   currentProjectID = this.id;
+  document.querySelector('#todo-list-title').textContent = event.target.innerText;
   displayTodos(currentProjectID);
 }
 
-function editButton() {
-  this.contentEditable = true;
+function editButton(projectID, todoID) {
+  let updatedText = prompt('?');
 
+  editTodo(projectID, todoID, updatedText)
+
+  displayTodos(currentProjectID);
 }
 
 

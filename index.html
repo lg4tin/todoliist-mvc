@@ -12,7 +12,7 @@
   <button onclick="addTodo()">Add Todo</button><button onclick="addProjectButton()">Add Project</button>
 
   
-  <h1>Todo List</h1>
+  <h1 id="todo-list-title">Todo List</h1>
   <div id="todo-list" style="margin-bottom: 200px;">
     
   </div>
@@ -20,8 +20,26 @@
   <div id="project-list">
     
   </div>
+
+
+  <div >
+    <div id="edit">hello</div>
+    <button onclick="hi()" >Edit</button>
+    <button>Delete</button>
+    <button onclick="save()">Save</button>
+  </div>
   
   
   <script src="script.js"></script>
+  <script>
+    function hi() {
+      document.querySelector('#edit').contentEditable = true;
+    }
+
+    function save() {
+      //let newText = document.querySelector('#edit').textContent;
+      //document.querySelector('#edit').textContent = newText;
+    }
+  </script>
 </body>
 </html>
