@@ -26,8 +26,9 @@ input {
 
 .sidebar {
   background-color: rgb(255, 122, 122);
-  height: 700px;
+  height: 600px;
   padding: 50px;
+  min-width: 225px;
 }
 
 .main {
@@ -45,11 +46,20 @@ input {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border-radius: 15px;;
+  border-radius: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  transition: 1s;
+}
+
+#todo-list div {
+  border: solid thick black;
+  margin-bottom: 10px;
 }
 
 #project-list div:hover {
   background-color: azure;
+  transform: scale(1.1);
 }
 
 .input-bar {

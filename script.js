@@ -95,7 +95,7 @@ function displayProjects() {
     element.id = project.id;
 
     let deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete Project';
+    deleteButton.textContent = 'Delete';
     deleteButton.onclick = () => {
       removeProject(element.id);
       displayProjects();
@@ -120,12 +120,11 @@ function displayTodos(projectID) {
         element.id = todo.id;
 
         let deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete Todo';
+        deleteButton.textContent = 'Delete';
         deleteButton.onclick = () => {
           removeTodoFromProject(currentProjectID, element.id);
           displayTodos(currentProjectID);
         }
-        element.appendChild(deleteButton);
 
         let editButton = document.createElement('button');
         editButton.textContent = 'Edit';
@@ -133,6 +132,7 @@ function displayTodos(projectID) {
           editButtons(currentProjectID, element.id)
         })
         element.appendChild(editButton);
+        element.appendChild(deleteButton);
 
         todoList.appendChild(element);
       })
