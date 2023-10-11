@@ -1,6 +1,22 @@
 //MODEL
 
-let projects = [];
+let projects = [
+  {
+    title: 'Chores',
+    id: 1,
+    projectTodos: []
+  },
+  {
+    title: 'Important',
+    id: 2,
+    projectTodos: []
+  },
+  {
+    title: 'Today',
+    id: 3,
+    projectTodos: []
+  },
+];
 
 function addProject(title) {
   projects.push({
@@ -71,7 +87,6 @@ function displayProjects() {
     let element = document.createElement('div');
     element.innerText = project.title;
     element.id = project.id;
-    element.contentEditable = true;
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete Project';
@@ -97,7 +112,6 @@ function displayTodos(projectID) {
         let element = document.createElement('div');
         element.innerText = todo.title;
         element.id = todo.id;
-        element.contentEditable = true;
 
         let deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete Todo';
@@ -124,21 +138,36 @@ function addTodo() {
   const date = document.querySelector('#date');
   const dueDate = date.value;
 
-  addTodoToProject(currentProjectID, title, dueDate);
-  displayTodos(currentProjectID);
+  if(title == '') {
+    alert('Add title');
+  } else {
+    addTodoToProject(currentProjectID, title, dueDate);
+    displayTodos(currentProjectID);
+  }
 }
 
 function addProjectButton() {
   const project = document.querySelector('#project-title');
   const projectTitle = project.value;
 
-  addProject(projectTitle);
-  displayProjects();
+  if(projectTitle == '') {
+    alert('Add Project Title');
+  } else {
+    addProject(projectTitle);
+    displayProjects();
+  }
 }
 
 function getProject() {
   currentProjectID = this.id;
   displayTodos(currentProjectID);
 }
+
+function editButton() {
+  this.contentEditable = true;
+
+}
+
+
 
 
