@@ -1,22 +1,29 @@
 //MODEL
 
-let projects = [
-  {
-    title: 'Chores',
-    id: 1,
-    projectTodos: []
-  },
-  {
-    title: 'Important',
-    id: 2,
-    projectTodos: []
-  },
-  {
-    title: 'Today',
-    id: 3,
-    projectTodos: []
-  },
-];
+let projects;
+
+const savedTodos = JSON.parse(localStorage.getItem('projects'));
+if (Array.isArray(savedTodos)) {
+  projects = savedTodos;
+} else {
+  projects = [
+    {
+      title: 'Chores',
+      id: 1,
+      projectTodos: []
+    },
+    {
+      title: 'Important',
+      id: 2,
+      projectTodos: []
+    },
+    {
+      title: 'Today',
+      id: 3,
+      projectTodos: []
+    },
+  ];
+}
 
 function addProject(title) {
   projects.push({
@@ -24,6 +31,8 @@ function addProject(title) {
     id: new Date().getTime(),
     projectTodos: []
   })
+
+  saveTodos()
 }
 
 function removeProject(id) {
@@ -34,6 +43,8 @@ function removeProject(id) {
       return true;
     }
   })
+
+  saveTodos()
 }
 
 function addTodoToProject(projectID, title, dueDate) {
@@ -46,6 +57,8 @@ function addTodoToProject(projectID, title, dueDate) {
       })
     }
   })
+
+  saveTodos()
 }
 
 function removeTodoFromProject(projectID, todoID) {
@@ -60,6 +73,8 @@ function removeTodoFromProject(projectID, todoID) {
       })
     }
   })
+
+  saveTodos()
 }
 
 function editTodo(projectID, todoID, updatedText) {
@@ -81,8 +96,15 @@ function editTodo(projectID, todoID, updatedText) {
         }
       })
     }
-  }) 
+  })
+  
+  saveTodos()
 }
+
+const saveTodos = () => {
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
+
 
 //VIEW
 

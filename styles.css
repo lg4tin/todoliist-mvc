@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+span {
+  color: red;
+}
+
 button {
   color: white;
   background-color: black;
