@@ -1,18 +1,6 @@
 //MODEL
 
-let projects = [
-  {
-    title: 'Chores',
-    id: 1,
-    projectTodos: [
-      {
-        title: 'Get groceries',
-        dueDate: '10-29-2023',
-        id: new Date().getTime()
-      }
-    ]
-  }
-]
+let projects = [];
 
 function addProject(title) {
   projects.push({
@@ -58,7 +46,21 @@ function removeTodoFromProject(projectID, todoID) {
   })
 }
 
-addProject('hi')
+function editTodo(projectID, todoID, updatedText) {
+  projects.forEach(project => {
+    if(project.id == projectID) {
+      project.projectTodos = project.projectTodos.map(todo => {
+        if(todo.id == todoID) {
+          return todo = {
+            title: updatedText,
+            dueDate: todo.dueDate,
+            id: todo.id
+          };
+        }
+      })
+    }
+  }) 
+}
 
 //VIEW
 
@@ -69,6 +71,7 @@ function displayProjects() {
     let element = document.createElement('div');
     element.innerText = project.title;
     element.id = project.id;
+    element.contentEditable = true;
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete Project';
@@ -94,6 +97,7 @@ function displayTodos(projectID) {
         let element = document.createElement('div');
         element.innerText = todo.title;
         element.id = todo.id;
+        element.contentEditable = true;
 
         let deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete Todo';

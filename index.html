@@ -4,22 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
-  <style>
-    #container {
-      display: flex;
-      gap: 200px;
-    }
-  </style>
+  
 </head>
 <body>
-  <h1>Todo!</h1>
+  <h1>TodoApp!</h1>
   <input type="text" placeholder="todo" id="todo-title"><input type="date" id="date"><input type="text" placeholder="project" id="project-title">
   <button onclick="addTodo()">Add Todo</button><button onclick="addProjectButton()">Add Project</button>
 
-  <div id="container">
-    <div id="todo-list">Todo List</div>
-    <div id="project-list">Project List</div>
+  
+  <h1>Todo List</h1>
+  <div id="todo-list" style="margin-bottom: 200px;">
+    
   </div>
+  <h1>Projects</h1>
+  <div id="project-list">
+    
+  </div>
+  
   
   <script src="script.js"></script>
 </body>
