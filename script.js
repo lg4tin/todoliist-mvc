@@ -91,7 +91,7 @@ function displayProjects() {
   projectList.textContent = '';
   projects.forEach(project => {
     let element = document.createElement('div');
-    element.innerText = project.title;
+    element.innerText = project.title;;
     element.id = project.id;
 
     let deleteButton = document.createElement('button');
@@ -116,7 +116,7 @@ function displayTodos(projectID) {
     if(project.id == projectID) {
       project.projectTodos.forEach(todo => {
         let element = document.createElement('div');
-        element.innerText = todo.title;
+        element.innerText = todo.title + ' ' + todo.dueDate;
         element.id = todo.id;
 
         let deleteButton = document.createElement('button');
@@ -130,13 +130,7 @@ function displayTodos(projectID) {
         let editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.addEventListener('click', () => {
-          let updatedText = prompt('?');
-          if(updatedText == '') return;
-
-          editTodo(currentProjectID, element.id, updatedText)
-
-          displayTodos(currentProjectID);
-          
+          editButtons(currentProjectID, element.id)
         })
         element.appendChild(editButton);
 
@@ -184,9 +178,9 @@ function getProject() {
   displayTodos(currentProjectID);
 }
 
-function editButton(projectID, todoID) {
+function editButtons(projectID, todoID) {
   let updatedText = prompt('?');
-  //if(updatedText == '') return;
+  if(updatedText == '') return;
 
   editTodo(projectID, todoID, updatedText)
 
