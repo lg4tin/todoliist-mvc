@@ -31,7 +31,7 @@ input {
 
 .sidebar {
   background-color: rgb(255, 122, 122);
-  height: 600px;
+  height: 100vh;
   padding: 50px;
   min-width: 225px;
 }

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 //MODEL
 
 let projects;
@@ -165,7 +166,6 @@ function displayTodos(projectID) {
 //CONTROLLER
 
 let currentProjectID;
-let currentProjectTitle;
 
 function addTodo() {
   const todo = document.querySelector('#todo-title');
@@ -196,7 +196,7 @@ function addProjectButton() {
 
 function getProject() {
   currentProjectID = this.id;
-  document.querySelector('#todo-list-title').textContent = event.target.innerText;
+  document.querySelector('#todo-list-title').textContent = event.target.innerText.slice(0, -7);
   displayTodos(currentProjectID);
 }
 
@@ -208,7 +208,3 @@ function editButtons(projectID, todoID) {
 
   displayTodos(currentProjectID);
 }
-
-
-
-
